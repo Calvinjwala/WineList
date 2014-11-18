@@ -1,19 +1,21 @@
+
+
 $.ajax({
   url: "http://daretodiscover.net/wine",
     success: function(wines){
-      var ul = $("<ul>").attr("id", "wines");
       console.log(wines);
-      $.each(wines, function(key, wineList){
-        $.each(wineList, function(key, wine){
-        // if (key == "name") {
-          console.log(key, wine);
-          var wineHTML = key + ": " + wine + "<br>";
-          ul.append(wineHTML);
-          // };
-        })
-      });
-      console.log(ul);
-      $('.wines').append(ul);
+      var ul = $("<ul>").attr("id", "wine");
+      // $.each(wines, function(key, wineList){
+      //   $.each(wineList, function(key, wine){
+      //     console.log(key, wine);
+          var template = HandlebarsTemplates["wine"];
+          var html = template(wines);
+          // console.log(html);
+          // var wineHTML = HandlebarsTemplates["templates/wine"]({wine:wine});
+          // ul.append(html);
+
+      // console.log(ul);
+      $('.wines').append(html);
     }
 });
 
